@@ -30,20 +30,26 @@ function DataList() {
       let response = await axios.get(
         `https://rickandmortyapi.com/api/character?${genderFilter}&${statusFilter}&${typeFilter}`
       );
-      //If no search filter then show all data
-      if (search === null) {
-        setData(response.data.results);
+      if (response?.data?.results) {
+        if (search === null) {
+          setData(response?.data?.results);
+        } else {
+          //aply filter on searched data
+          const filteredData = response?.data?.results.filter((item) =>
+            item.name.toLowerCase().includes(search.toLowerCase())
+          );
+          setData(filteredData);
+        }
       } else {
-        //aply filter on searched data
-        const filteredData = response.data.results.filter((item) =>
-          item.name.toLowerCase().includes(search.toLowerCase())
-        );
-        setData(filteredData);
+        console.log("No data found");
+        setData([]);
       }
+      //If no search filter then show all data
     } catch (error) {
-      throw new Error(error)
+      throw new Error(error);
     }
   };
+
   return (
     <div style={{ margin: "30px" }}>
       <div

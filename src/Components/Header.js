@@ -88,6 +88,7 @@ function Header() {
           </option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
+          <option value="Unknown">Unknown</option>
         </select>
 
         <select
@@ -125,10 +126,10 @@ function Header() {
           <option selected disabled>
             Select Type:
           </option>
-          <option>Genetic experiment</option>
-          <option>Superhuman (Ghost trains summoner)</option>
+          <option value="human">Human</option>
+          <option value="Superhuman">Superhuman (Ghost trains summoner)</option>
           <option>Parasite</option>
-          <option>Human with antennae</option>
+          <option value="clone">Clone</option>
         </select>
         <button
           style={{
